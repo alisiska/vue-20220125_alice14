@@ -1,0 +1,16 @@
+on:
+  pull_request:
+    types:
+      - 'opened'
+      - 'reopened'
+jobs:
+  execute-scan-workflow:
+    uses: threatrix/threat-agent-scan/.github/workflows/scan-repo-reusable.yaml@master
+    with:
+      eid: a4bf8f67-3c3f-4291-afc3-974a11163aa1
+      oid: 739f8321-9558-40b7-aa78-0a58a30ba1fc
+      app-name: vue-20220125_alice14
+      trx-host: https://app.threatrix.io
+    secrets:
+      TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      THREATRIX_SERVER_API_KEY: ${{ secrets.TRX_API_KEY }}
